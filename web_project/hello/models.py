@@ -23,9 +23,9 @@ class QuestionFlow(models.Model):
 
 class UserResponse(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    answer = models.ForeignKey(Answer, on_delete=models.CASCADE)
+    session_id = models.CharField(max_length=255)
+    question_ids = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.user} - {self.question} - {self.answer}"
+        return f"{self.user} - {self.session_id} - {self.question_ids}"

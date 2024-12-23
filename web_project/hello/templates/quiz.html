@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Interativo</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <div id="quiz-container">
+        <h2>{{ question.text }}</h2>
+        <form method="post">
+            {% csrf_token %}
+            {% for answer in question.answers.all %}
+                <button type="submit" name="answer" value="{{ answer.id }}">{{ answer.text }}</button>
+            {% endfor %}
+        </form>
+    </div>
+</body>
+</html>
